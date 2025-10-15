@@ -207,6 +207,11 @@ img:hover {
   background: white;
   border: 2px solid ;
   color: #c02049;
+  transition: 0.4s ease-in-out;
+}
+.buttons .tw:hover {
+  background: #c02049;
+  color: white;
 }
 
 /* Footer */
