@@ -133,6 +133,12 @@ nav a:focus {
     overflow-x: hidden;
   }
 
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
   .content h2 {
     font-size: 1.5rem;
   }
@@ -228,4 +234,226 @@ footer a {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.25s ease;
+}
+
+/* Main content */
+main {
+  padding-top: var(--header-height); /* Add space for fixed header */
+}
+
+.about-section {
+  padding-top: 0; /* Remove any extra padding at the top */
+  margin-top: 0; /* Remove any margin at the top */
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+  line-height: 1.6;
+  height: auto;
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-header h1 {
+  margin: 0;
+  color: var(--accent);
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  background: #0b1324;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* About page sections */
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.role,
+.skills,
+.education,
+.edu,
+.certs,
+.achievements,
+.testimonials {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.role h2,
+.skills h2,
+.education h2,
+.edu h2,
+.certs h2,
+.achievements h2,
+.testimonials h2 {
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0;
+}
+
+.role i,
+.skills i,
+.education i,
+.edu i,
+.certs i,
+.achievements i,
+.testimonials i {
+  color: var(--accent);
+}
+
+.skills ul,
+.role ul,
+.edu ul,
+.certs ul,
+.achievements ul {
+  padding-left: 1.5rem;
+  list-style-type: none;
+}
+
+.skills ul li,
+.role ul li,
+.edu ul li,
+.certs ul li,
+.achievements ul li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.skills ul li::before,
+.role ul li::before,
+.edu ul li::before,
+.certs ul li::before,
+.achievements ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.education {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.edu,
+.certs,
+.achievements {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 300px; /* Ensures uniform height */
+}
+
+.edu h2,
+.certs h2,
+.achievements h2 {
+  margin-bottom: 1rem;
+}
+
+.edu ul,
+.certs ul,
+.achievements ul {
+  flex-grow: 1; /* Makes the content fill available space */
+}
+
+.testimonials-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.testimonials {
+  margin-top: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+/* Responsive layout for larger screens */
+@media (min-width: 768px) {
+  .about-section {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .education {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials {
+    grid-column: 1 / -1;
+  }
+
+  /* Ensure edu and certs are in the first row, achievements alone in second row */
+  .edu,
+  .certs {
+    grid-row: 1;
+  }
+
+  .achievements {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .education {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .edu,
+  .certs,
+  .achievements {
+    grid-row: auto;
+  }
+
+  .achievements {
+    grid-column: auto;
+  }
+
+  .testimonials {
+    grid-column: 1 / -1;
+  }
 }
