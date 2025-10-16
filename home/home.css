@@ -252,6 +252,7 @@ nav a:focus {
 .typing-container .dyn-txt {
   margin-left: 6px;
   height: 30px;
+  width: 260px;
   overflow: hidden;
   position: relative;
   list-style: none;
@@ -261,45 +262,70 @@ nav a:focus {
 .dyn-txt li {
   height: 30px;
   line-height: 30px;
-  position: relative;
+  position: absolute;
+  left: 0;
   top: 0;
   color: var(--accent);
   font-weight: 700;
   font-size: 1rem;
-  animation: slide 12s steps(2) infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--accent);
+  animation: cursor 0.75s steps(2) infinite;
+  opacity: 0;
 }
 
-@keyframes slide {
-  100% {
-    top: -60px; /* Move up to show the second item (30px × 2 items) */
+.dyn-txt li:nth-child(1) {
+  animation: type1 12s steps(14) infinite;
+}
+
+.dyn-txt li:nth-child(2) {
+  animation: type2 12s steps(22) infinite;
+}
+
+@keyframes cursor {
+  from,
+  to {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: var(--accent);
   }
 }
 
-.dyn-txt li span {
-  position: relative;
-}
-
-/* Create typing cursor effect */
-.dyn-txt li span::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0; /* Start with 0 width */
-  background: var(--bg); /* Use background color to hide text */
-  border-left: 2px solid var(--accent); /* The typing cursor */
-  animation: typing 6s steps(40) infinite;
-}
-
-@keyframes typing {
-  40%, 60% {
-    left: calc(100% + 10px); /* Move cursor all the way to the right */
+@keyframes type1 {
+  0%,
+  5% {
     width: 0;
+    opacity: 1;
   }
-  0%, 30%, 80%, 100% {
-    left: 0;
-    width: 100%; /* Cover the entire text */
+  20%,
+  45% {
+    width: 100%;
+    opacity: 1;
+  }
+  50%,
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes type2 {
+  0%,
+  50% {
+    width: 0;
+    opacity: 0;
+  }
+  55%,
+  80% {
+    width: 100%;
+    opacity: 1;
+  }
+  85%,
+  100% {
+    width: 0;
+    opacity: 0;
   }
 }
 
@@ -355,13 +381,9 @@ img:hover {
     line-height: 24px;
     font-size: 0.95rem;
   }
-  
-  /* Adjust the slide animation for smaller height on mobile */
-  @keyframes slide {
-    100% {
-      top: -48px; /* Move up 24px × 2 items */
-    }
-  }
+
+  /* Animation doesn't need adjustment for mobile since we're using absolute positioning */
+  /* The fadeInOut animation works the same on all screen sizes */
 
   .buttons {
     flex-direction: column;
