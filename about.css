@@ -1,0 +1,231 @@
+:root {
+  --bg: #fffafa;
+  --accent: #c02049;
+  --accent-weak: #ff6666;
+  --text: #222;
+  --muted: #666;
+  --header-height: 80px;
+  --max-width: 1100px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Noto Sans", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  gap: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(244, 234, 226, 0.95),
+    rgba(244, 234, 226, 0.9)
+  );
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+  z-index: 1000;
+}
+header.scrolled {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  inset: 0;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+.logo {
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ic {
+  font-size: 25px;
+  color: var(--accent);
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  right: 5%;
+}
+
+#check {
+  display: none;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+nav ul {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+nav a:hover,
+nav a:focus {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(192, 32, 73, 0.12);
+  outline: none;
+}
+
+/*! Responsive design */
+@media (max-width: 992px) {
+  header {
+    padding: 1.3rem 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0 5%;
+  }
+
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .content h2 {
+    font-size: 1.5rem;
+  }
+
+  .content p {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  .content .par {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  .ic {
+    display: inline-flex;
+    z-index: 1001;
+  }
+
+  #check:checked ~ .ic #menu-icon {
+    display: none;
+  }
+
+  .ic #close-icon {
+    display: none;
+  }
+
+  #check:checked ~ .ic #close-icon {
+    display: block;
+  }
+
+  .menu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: var(--bg);
+    height: 0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    flex-direction: column;
+    transition: 0.3s ease;
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  #check:checked ~ .menu {
+    height: auto;
+    min-height: 240px; /* Set a minimum height to ensure content visibility */
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .menu a {
+    display: block;
+    font-size: 1rem;
+    margin: 1.2rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    transition: 0.3s ease;
+    opacity: 0;
+  }
+
+  #check:checked ~ .menu a {
+    transform: translateY(0);
+    transition-delay: calc(0.15s * var(--i));
+    opacity: 1;
+    display: inline-block;
+    width: 80%;
+  }
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  padding: 1rem 0;
+  text-align: center;
+  border-top: 1px solid #eee;
+  color: var(--muted);
+  font-size: 0.9rem;
+  background-color: #f4eae2f2;
+}
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
