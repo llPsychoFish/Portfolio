@@ -10,17 +10,29 @@
     <link rel="stylesheet" href="home.css" type="text/css">
     <title>Portfoilio | Home</title>
   </head>
+  /**
+    * todo:
+    * 1. Make the menu responsive
+    * 2. Add animations to the text (typewriter effect)
+    */
   <body>
     <header>
       <div class="logo">
         <h2>Samuel Yeboah</h2>
       </div>
+
+      <input type="checkbox" name="check" id="check">
+      <label for="check" class="ic">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <i class="fa-solid fa-circle-xmark" id="close-icon"></i>
+      </label>
+
       <nav class="menu">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#" style="--i:0;">Home</a></li>
+          <li><a href="#" style="--i:1;">About</a></li>
+          <li><a href="#" style="--i:2;">Services</a></li>
+          <li><a href="#" style="--i:3;">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -30,7 +42,6 @@
         <h2>HI, I'M SAMUEL YEBOAH</h2>
         <img src="images/pic.jpg" alt="A picture of Samuel"/>
         <p>I'M <span>A GRAPHIC DESIGNER</span></p>
-        <!--animate it and make it type one by one like a typewritter switiching between graphic designer and something that involves printin and all that stuff-->
         <p class="par">
           I'm a graphic and creative content designer with a passion for visual storytelling, branding, and print media. I specialize in creating compelling designs for both digital and print platforms, helping brands communicate their message effectively and creatively.
         </p>
